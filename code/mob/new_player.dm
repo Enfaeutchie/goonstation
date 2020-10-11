@@ -486,6 +486,22 @@ mob/new_player
 	font-weight: bold;
 	}
 
+.info-thing {
+	background: rgba(128, 128, 255, 0.4);
+	color: rgba(255, 255, 255, 0.8);
+	margin-left: 0.5em;
+	display: inline-block;
+	text-align: center;
+	font-size: 80%;
+	font-weight: bold;
+	min-width: 1.2em;
+	min-height: 1.2em;
+	border-radius: 100%;
+	position: relative;
+	top: -1px;
+	cursor: help;
+	}
+
 .latejoin-full {
 	opacity: 0.4;
 	color: black;
@@ -521,23 +537,23 @@ a.latejoin-card:hover {
 		// deal with it
 		dat += ""
 		if (ticker.mode && !istype(ticker.mode, /datum/game_mode/construction) && !istype(ticker.mode,/datum/game_mode/battle_royale) && !istype(ticker.mode,/datum/game_mode/football))
-			dat += {"<div class='fuck'><table class='latejoin'><tr><th colspan='2'>Command/Security</th></tr>"}
+			dat += {"<div class='fuck'><table class='latejoin'><tr><th colspan='2'>Command/Security <span class="info-thing" title="The Command Team is in charge of the proper running of the station and their departments, while the Security Team upholds the law and maintains order.">?</span></th></tr>"}
 			for(var/datum/job/command/J in job_controls.staple_jobs)
 				dat += LateJoinLink(J)
 			for(var/datum/job/security/J in job_controls.staple_jobs)
 				dat += LateJoinLink(J)
 			//dat += "</table></td>"
 
-			dat += {"<tr><td colspan='2'>&nbsp;</td></tr><tr><th colspan='2'>Research</th></tr>"}
+			dat += {"<tr><td colspan='2'>&nbsp;</td></tr><tr><th colspan='2'>Research <span class="info-thing" title="The scientists of the Research Team have access to several different labs they can use to help or, as antagonists, hinder the station. The Medical Team is in charge of the crew's wellbeing, with the medical doctors offering primary medical care, the geneticists inventing special mutations to assist the crew, and the roboticists providing cybernetics and looking after the station's robots.">?</span></th></tr>"}
 			for(var/datum/job/research/J in job_controls.staple_jobs)
 				dat += LateJoinLink(J)
 			//dat += "</table></td>"
 
 			//dat += {"<td valign="top"><table>"}
-			dat += {"<tr><td colspan='2'>&nbsp;</td></tr><tr><th colspan='2'>Engineering</th></tr>"}
+			dat += {"<tr><td colspan='2'>&nbsp;</td></tr><tr><th colspan='2'>Engineering <span class="info-thing" title="The Engineering Team is in charge of keeping the station powered, supplied, and in as close to one piece as possible. The engineers start up the engine and can work to fix or expand it with the construction worker, while the mechanics can make copies of important equipment or make their own devices with the MechComp system. The miners and quartermasters, meanwhile, keep the station supplied and profitable.">?</span></th></tr>"}
 			for(var/datum/job/engineering/J in job_controls.staple_jobs)
 				dat += LateJoinLink(J)
-			dat += {"</table></div><div class='fuck'><table class='latejoin'><tr><th colspan='2'>Civilian</th></tr>"}
+			dat += {"</table></div><div class='fuck'><table class='latejoin'><tr><th colspan='2'>Civilian <span class="info-thing" title="The Civilian Department deals with catering, sanitation, and the other little jobs of looking after the crew. It also includes some crew with no specific jobs, like staff assistants. Because no jobs here are absolutely necessary for the station to function, they're great choices for beginners, or experienced players looking to relax.">?</span></th></tr>"}
 
 			for(var/datum/job/civilian/J in job_controls.staple_jobs)
 				dat += LateJoinLink(J)
@@ -552,7 +568,7 @@ a.latejoin-card:hover {
 
 			// is this ever actually off? ?????
 			if (job_controls.allow_special_jobs)
-				dat += {"<tr><td colspan='2'>&nbsp;</td></tr><tr><th colspan='2'>Special Jobs</th></tr>"}
+				dat += {"<tr><td colspan='2'>&nbsp;</td></tr><tr><th colspan='2'>Special Jobs <span class="info-thing" title="The Special Jobs include the Gimmick Roles and special Seasonal Roles at certain times of year. These jobs are only available to players who join after the round starts, and usually don't have specific jobs to perform on the station.">?</span></th></tr>"}
 
 				for(var/datum/job/special/J in job_controls.special_jobs)
 					if (IsJobAvailable(J) && !J.no_late_join)
